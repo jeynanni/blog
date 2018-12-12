@@ -1,3 +1,12 @@
 .image {
-    width: 50% !important;
+    width: 30% !important;
+    margin-top: 30px;
+}
+.card {
+    align-items: center;
+    
+}
+
+.primario {
+   margin: 30px;
 }
