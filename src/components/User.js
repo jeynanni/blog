@@ -21,13 +21,13 @@ class User extends Component {
     }
 
     secondFetch() {
-        fetch('https://jsonplaceholder.typicode.com/users/' + this.props.id)
+        fetch('https://jsonplaceholder.typicode.com/users/' + this.props.match.params.id)
             .then(response => response.json())
             .then(json => this.setState({ user: json, loader: false }))
     }
 
     thirdFetch() {
-        fetch('https://jsonplaceholder.typicode.com/users/' + this.props.id + '/posts')
+        fetch('https://jsonplaceholder.typicode.com/users/' + this.props.match.params.id + '/posts')
             .then(response => response.json())
             .then(json => this.setState({ posts: json, loader: false }))
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import User from './User';
 import {
   Collapse,
@@ -13,9 +13,10 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem
+} from 'reactstrap';
 
-  
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -23,14 +24,14 @@ class Home extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      posts : []
+      posts: []
     };
-    this.firstFetch() 
+    this.firstFetch()
   }
   firstFetch = () => {
     fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then(json => this.setState({posts:json}))
+      .then(response => response.json())
+      .then(json => this.setState({ posts: json }))
   }
 
   toggle() {
@@ -38,37 +39,41 @@ class Home extends Component {
       isOpen: !this.state.isOpen
     });
   }
- 
+
   render() {
     return (
-      
+
       <div className="App">
-      
+
         <Navbar color="warning" light expand="md">
           <NavbarBrand href="/">JEY BLOG</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-              <NavLink href="/">Home</NavLink>
+                <NavLink href={`/1`}>Home</NavLink>
               </NavItem>
               <NavItem>
-              <NavLink href="/user/">User</NavLink>
+                <NavLink href={`/User/3`}>User</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Posts/">Posts</NavLink>
-                </NavItem> 
-              
+                <NavLink href={`/Posts/6`}>Posts</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href={`/Comments/9`}>Comments</NavLink>
+              </NavItem>
+
             </Nav>
           </Collapse>
         </Navbar>
-       
-       {/*} {this.state.posts.map(item => {
+
+
+        {/*} {this.state.posts.map(item => {
           return <Posts key={item.id} data = {item}/>
         }) }*/}
-      
+
       </div>
-      
+
     );
   }
 }
